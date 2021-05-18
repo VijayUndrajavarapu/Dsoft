@@ -7,7 +7,7 @@ public class Random_Myntra extends Base_May10{
 		openBrowser("chromebrowser");
 		//deleteAllcookies();
 		NavigateURL("myntra");
-		NavigateURL("demosite");
+		
 		MaximizeBrowser();
 		String url = getcurrentURL();
 		System.out.println(url);

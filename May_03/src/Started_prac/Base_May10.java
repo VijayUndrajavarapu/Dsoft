@@ -13,6 +13,8 @@ public class Base_May10 {
 	public static Properties DataProp;
 	public static FileInputStream fis;
 	public static Properties EnivProp;
+	public static String projectPath = "C:\\Users\\Lenovo\\eclipse-workspace\\May_03";
+	public static Properties ChildProp;
 	
 	public static void openBrowser(String browser) {	
 		if(DataProp.getProperty(browser).equals("chrome")) { //Key base value 
@@ -29,10 +31,19 @@ public class Base_May10 {
 		DataProp = new Properties();
 		DataProp.load(fis);
 		
-		fis = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\May_03\\environment.properties");
+		fis = new FileInputStream(projectPath + "\\environment.properties");
 		Properties EnivProp = new Properties();
 		EnivProp.load(fis);
-		System.out.println(EnivProp.getProperty("envi"));
+		String Environment = EnivProp.getProperty("envi");
+		System.out.println(Environment);
+		
+		fis = new FileInputStream(projectPath + "\\" + Environment + ".properties");
+		ChildProp = new Properties();
+		ChildProp.load(fis);
+		/*
+		 * String ChildProperty = ChildProp.getProperty("flipkart");
+		 * System.out.println(ChildProperty);
+		 */
 		
 	}
 	
