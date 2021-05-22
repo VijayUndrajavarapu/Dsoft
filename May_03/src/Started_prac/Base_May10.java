@@ -1,15 +1,18 @@
 package Started_prac;
 
 import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Base_May10 {
 
-	public static WebDriver driver;
+	public static ChromeDriver driver;
 	public static Properties DataProp;
 	public static FileInputStream fis;
 	public static Properties EnivProp;
@@ -19,9 +22,19 @@ public class Base_May10 {
 	public static void openBrowser(String browser) {	
 		if(DataProp.getProperty(browser).equals("chrome")) { //Key base value 
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Desktop\\vijay\\chromedriver_win32\\chromedriver.exe");
+			
+			/*
+			 * Map<String, Object> pref = new HashMap<String , Object>();
+			 * pref.put("profile.default_content_setting_values.notifications", 2);
+			 * ChromeOptions options = new ChromeOptions();
+			 * options.setExperimentalOption("pref", pref);
+			 */
+			
+			
 			driver = new ChromeDriver();
+			
 		}else {
-			driver =new FirefoxDriver();
+			//driver =new FirefoxDriver();
 			
 		}
 	}
@@ -35,7 +48,7 @@ public class Base_May10 {
 		Properties EnivProp = new Properties();
 		EnivProp.load(fis);
 		String Environment = EnivProp.getProperty("envi");
-		System.out.println(Environment);
+		//System.out.println(Environment);
 		
 		fis = new FileInputStream(projectPath + "\\" + Environment + ".properties");
 		ChildProp = new Properties();

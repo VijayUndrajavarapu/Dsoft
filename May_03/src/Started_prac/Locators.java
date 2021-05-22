@@ -1,6 +1,11 @@
 package Started_prac;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.SendKeysAction;
 
 public class Locators extends Base_May10{
 	public static void main(String[] args) throws Exception {
@@ -18,9 +23,19 @@ public class Locators extends Base_May10{
 		 */
 		init();
 		openBrowser("chromebrowser");
-		NavigateURL("myntra");
+		NavigateURL("demosite");
+		
+		Map<String, Object> pref = new HashMap<String , Object>();
+		pref.put("profile.default_content_setting_values.notifications", 2);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("pref", pref);
+		
 		String pagesource = driver.getPageSource();
 		System.out.println(pagesource);
+		
+		
+		driver.findElement(By.className("form-control")).sendKeys("vija");
+		
 		
 		/*
 		 * webDriver methods
@@ -41,6 +56,17 @@ public class Locators extends Base_May10{
 		 * 
 		 */
 		
-		driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).sendKeys("HRX");
+		/*
+		 * driver.findElement(By.xpath(
+		 * "//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).sendKeys("HRX");
+		 * driver.findElement(By.xpath(
+		 * "//*[@id=\"desktop-header-cnt\"]//*[@class=\"desktop-navContent\"][1]")).
+		 * click();
+		 */
+		
+		
+		
+		
+		
 	}
 }
