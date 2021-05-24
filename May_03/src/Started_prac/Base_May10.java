@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -18,6 +20,7 @@ public class Base_May10 {
 	public static Properties EnivProp;
 	public static String projectPath = "C:\\Users\\Lenovo\\eclipse-workspace\\May_03";
 	public static Properties ChildProp;
+	public static Properties OrProp;
 	
 	public static void openBrowser(String browser) {	
 		if(DataProp.getProperty(browser).equals("chrome")) { //Key base value 
@@ -58,6 +61,12 @@ public class Base_May10 {
 		 * System.out.println(ChildProperty);
 		 */
 		
+		fis = new FileInputStream(projectPath + "\\or.properties");
+		OrProp = new Properties();
+		OrProp.load(fis);
+		
+		
+		
 	}
 	
 	public static void NavigateURL(String URL) {
@@ -87,5 +96,39 @@ public class Base_May10 {
 		return driver.getCurrentUrl();
 		
 	}
+	public static void TypeText(String Locatorkey, String Text) {
+		//driver.findElement(By.id(OrProp.getProperty(Locatorkey))).sendKeys(Text);
+		getElement(Locatorkey).sendKeys(Text);
+		
+	}
+
+	public static WebElement getElement(String LocatorKey) {
+		WebElement element = null;
+		
+		if(LocatorKey.endsWith("_id")) 
+			element = driver.findElement(By.id(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_name"))
+			element = driver.findElement(By.name(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_class"))
+			element = driver.findElement(By.className(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_xpath"))
+			element = driver.findElement(By.xpath(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_cssSelector"))
+			element = driver.findElement(By.cssSelector(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_linkText"))
+			element = driver.findElement(By.linkText(OrProp.getProperty(LocatorKey)));
+		else if(LocatorKey.endsWith("_partiallinkText"))
+			element = driver.findElement(By.partialLinkText(OrProp.getProperty(LocatorKey)));
+		
+			
+		return element;
+	}
+
+	public static void ClickElement(String Locatorkey) {
+		//driver.findElement(By.xpath(OrProp.getProperty(Locatorkey))).click();
+		getElement(Locatorkey).click();
+	}
+	
+
 
 }

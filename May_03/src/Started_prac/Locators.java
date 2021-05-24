@@ -1,13 +1,18 @@
 package Started_prac;
 
+import java.awt.List;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.SendKeysAction;
+
+
 
 public class Locators extends Base_May10{
+	
+ 
 	public static void main(String[] args) throws Exception {
 		/*
 		 * All these locators are static methods 		/BY Class
@@ -30,11 +35,10 @@ public class Locators extends Base_May10{
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("pref", pref);
 		
-		String pagesource = driver.getPageSource();
-		System.out.println(pagesource);
-		
-		
-		driver.findElement(By.className("form-control")).sendKeys("vija");
+		/*
+		 * String pagesource = driver.getPageSource(); 
+		 * System.out.println(pagesource);
+		 */
 		
 		
 		/*
@@ -56,7 +60,11 @@ public class Locators extends Base_May10{
 		 * 
 		 */
 		
+		
 		/*
+		 * HARD CODED DATA 
+		 * 
+		 *
 		 * driver.findElement(By.xpath(
 		 * "//*[@id=\"desktop-header-cnt\"]/div[2]/div[3]/input")).sendKeys("HRX");
 		 * driver.findElement(By.xpath(
@@ -64,9 +72,28 @@ public class Locators extends Base_May10{
 		 * click();
 		 */
 		
+
 		
+		TypeText("login_id","vijaykumar@gmail.com");
+		TypeText("loginPassword_name","Encrypt");
+		ClickElement("RememberMe_name");
+		ClickElement("logicButtion_cssSelector");
+		ClickElement("register_linkText");
+		NavigateBack();
+		ClickElement("register_partiallinkText");
 		
+		int visibleLinks = 0;
+		java.util.List<WebElement> tag = driver.findElements(By.tagName("a"));
+		System.out.println("Total Number of links =" + tag.size());
 		
-		
+		for(int i =1; i<tag.size(); i++) {
+			if(!tag.get(i).getText().isEmpty()) {
+				System.out.println(tag.get(i).getText());
+				visibleLinks++;
+			}
+		}
+		System.out.println(visibleLinks);
 	}
+
+	
 }
