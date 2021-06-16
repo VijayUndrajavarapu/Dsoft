@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -66,6 +67,9 @@ public class Base_May10 {
 		OrProp.load(fis);
 		
 		
+		fis = new FileInputStream(projectPath + "\\log4jconfig.properties");
+		PropertyConfigurator.configure(fis);
+		//for log4j
 		
 	}
 	
