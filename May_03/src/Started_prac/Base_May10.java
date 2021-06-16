@@ -18,13 +18,13 @@ public class Base_May10 {
 	public static Properties DataProp;
 	public static FileInputStream fis;
 	public static Properties EnivProp;
-	public static String projectPath = "C:\\Users\\Lenovo\\eclipse-workspace\\May_03";
+	public static String projectPath = "C:\\Users\\lenovo\\git\\Dsoft\\May_03";
 	public static Properties ChildProp;
 	public static Properties OrProp;
 	
 	public static void openBrowser(String browser) {	
 		if(DataProp.getProperty(browser).equals("chrome")) { //Key base value 
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Desktop\\vijay\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","D:\\New folder\\Downloads\\chromedriver_win32\\chromedriver.exe");
 			
 			/*
 			 * Map<String, Object> pref = new HashMap<String , Object>();
@@ -43,7 +43,7 @@ public class Base_May10 {
 	}
 	
 	public static void init() throws Exception{
-		fis = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\May_03\\data.properties");
+		fis = new FileInputStream("C:\\Users\\lenovo\\git\\Dsoft\\May_03\\data.properties" ); 
 		DataProp = new Properties();
 		DataProp.load(fis);
 		
