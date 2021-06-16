@@ -32,6 +32,8 @@ public class log4j extends Base_May10{
 		ClickElement("register_linkText");
 		NavigateBack();
 		ClickElement("register_partiallinkText");
+		
+		log.info("--------------END---------");
 	}
 
 }
