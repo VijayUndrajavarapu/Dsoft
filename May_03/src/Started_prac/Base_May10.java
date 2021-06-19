@@ -1,17 +1,15 @@
 package Started_prac;
 
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.relevantcodes.extentreports.ExtentReports;
 
 public class Base_May10 {
 
@@ -22,6 +20,16 @@ public class Base_May10 {
 	public static String projectPath = "C:\\Users\\lenovo\\git\\Dsoft\\May_03";
 	public static Properties ChildProp;
 	public static Properties OrProp;
+	public static String filePath;
+	public static ExtentReports ereport;
+	
+	static
+	{
+		Date dt = new Date();
+		filePath = dt.toString().replace(':', '_').replace(' ', '_');
+	}
+	
+	
 	
 	public static void openBrowser(String browser) {	
 		if(DataProp.getProperty(browser).equals("chrome")) { //Key base value 
@@ -71,7 +79,13 @@ public class Base_May10 {
 		PropertyConfigurator.configure(fis);
 		//for log4j
 		
+		//ereport = ExtentManager.getInstance();
+		
 	}
+	
+	
+	
+	
 	
 	public static void NavigateURL(String URL) {
 		driver.get(DataProp.getProperty(URL));
@@ -132,6 +146,11 @@ public class Base_May10 {
 		//driver.findElement(By.xpath(OrProp.getProperty(Locatorkey))).click();
 		getElement(Locatorkey).click();
 	}
+	
+	
+	//ExtentManager.getInstance();
+	 
+	
 	
 
 

@@ -1,6 +1,11 @@
 package Started_prac;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.io.FileHandler;
 
 public class log4j extends Base_May10{
 	
@@ -9,6 +14,7 @@ public class log4j extends Base_May10{
 	public static void main(String[] args) throws Exception {
 		
 		init();
+		//test = ereport.startTest("log4j");
 		log.info("Loading Init method");
 		
 		openBrowser("chromebrowser");
@@ -33,7 +39,10 @@ public class log4j extends Base_May10{
 		NavigateBack();
 		ClickElement("register_partiallinkText");
 		
-		log.info("--------------END---------");
+		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(src, new File("C:\\Users\\lenovo\\Desktop\\ss.jpg"));
+		
+	
 	}
 
 }
